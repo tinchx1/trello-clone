@@ -1,0 +1,427 @@
+body {
+    display: grid;
+    grid-template-columns: 260px 1fr; /* Columnas: aside y contenido principal */
+    grid-template-rows: auto 1fr; /* Filas: navbar y resto del contenido */
+    grid-template-areas:
+        "nav nav"
+        "aside main";
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Establece la altura del cuerpo y el html al 100% */
+    overflow: hidden; /* Desactiva el desplazamiento vertical */
+    overflow-x: auto;
+}
+nav {
+    grid-area: nav;
+    color: white; /* Texto blanco */
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    height: 20px;
+
+}
+
+nav img {
+    height: auto;
+    width: 100px;
+    margin-right: 1rem;
+}
+
+nav .plus-icon {
+    background-color: #0079bf; /* Fondo azul solo para el ícono de más */
+    color: white; /* Color del ícono */
+    padding: 0.4rem; /* Ajusta el espacio alrededor del ícono */
+    border-radius: 50%; /* Asegura que el ícono tenga forma de círculo */
+}
+
+nav i {
+    margin-right: 1rem; /* Espacio entre los íconos */
+    color: black; /* Color de los íconos */
+    font-size: 1.2rem; /* Tamaño de los íconos */
+}
+.left {
+    display: flex;
+}
+nav ul {
+    display: flex;
+}
+main {
+    grid-area: main;
+    display: flex;
+    background: linear-gradient(to bottom, hsl(215, 90%, 76.4%), hsl(215, 100%, 90%));
+}
+
+aside {
+    grid-area: aside;
+    height: 100vh;
+    background-color: #fff; /* Color de fondo del aside */
+    max-width: 260px;
+    color: #172b4d;
+    background-color: #3498db;
+    color: #fff;
+}
+
+aside h3 {
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+    padding: 1.5rem 2.5rem;
+    font-weight: 600;
+    align-items: center;
+    
+}
+aside h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+aside header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.8rem 1.2rem 0.7rem;
+}
+aside ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+aside ul li {
+    padding: 0.5rem 1.5rem;
+}
+.board {
+    flex: 1; /* El contenido principal (sección de la derecha) ocupará el espacio restante */
+    padding: 1rem;
+}
+
+aside button {
+    transition: color 0.3s ease;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+aside button:hover {
+    background-color: #5da6e2;
+
+}
+/* Estilo para el botón de añadir lista */
+.add-list-btn {
+    margin-top: 8px;
+}
+
+/* Estilo para el botón de añadir tarjeta */
+.add-card-btn {
+    margin-top: 8px;
+}
+
+/* Cambiar color de fondo cuando se pasa el cursor sobre el botón */
+
+
+/* Estilos para las listas (cartas) */
+.list {
+    display: inline-block;
+    vertical-align: top;
+    margin: 40px 40px 0 0; /* Espacio entre las listas */
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px; /* Ancho de cada lista */
+}
+
+.list-header {
+    margin-bottom: 10px;
+}
+
+
+/* Estilos para las cartas dentro de las listas */
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Espacio entre las cartas */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el botón de añadir lista */
+.add-list-btn {
+    display: inline-block;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+
+
+.board-section {
+    padding: 20px;
+}
+
+.lists-container {
+    white-space: nowrap; /* Evita el salto de línea entre las listas */
+    overflow-x: auto; /* Permite desplazarse horizontalmente cuando hay muchas listas */
+    overflow-y: hidden; /* Oculta la barra de desplazamiento vertical */
+}
+
+.lists-container::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores webkit */
+}
+
+#new-board-form {
+    height: 250px;
+    margin-top: 5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: #172b4d;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    inset: 62px auto auto 67px;
+    width: 304px;
+    z-index: 1;
+}
+#new-board-form img {
+    margin: 0 auto;
+    padding: 5px;
+    max-width: 210px;
+    background: linear-gradient(to bottom, hsl(215, 90%, 76.4%), hsl(215, 100%, 90%));
+}
+#new-board-form h4 {
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#board-name {
+    outline: none;
+    border: solid 2px #ccc;
+    border-radius: 0.2rem;
+    height: 1.5rem;
+    margin: 1rem 0;
+}
+
+#board-name:hover {
+    border-color:#0079bf; 
+}
+#board-buttom {
+    height: 1.8rem;
+}
+#board-buttom:hover {
+    background-color: #0069ff;
+}
+
+.close-form-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #ccc;
+    padding: 0 10px;
+}
+.color {
+    display: inline-block;
+    margin: 5px;
+    height: 1.7rem;
+    width: 2.3rem;
+}
+
+.board-item {
+    display: flex;
+    justify-content: space-between;
+}
+.board-item:hover {
+    background-color: #5da6e2;
+}
+.selected {
+    background-color:#62b0f0;
+}
+
+.delete-board-btn {
+    padding: 0;
+}
+.delete-board-btn:hover {
+    background-color:#62b0f0;
+
+}
+/* Estilos para las cartas dentro de las listas */
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 15px; /* Espacio entre las cartas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 180px;    
+    word-wrap: break-word;
+}
+.card-text {
+    padding-right: 1rem;
+    margin: 0;
+}
+
+/* Estilo para el botón de añadir lista */
+.add-list-btn {
+    display: inline-block;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para el botón de añadir tarjeta */
+.add-card-btn {
+    display: inline-block;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Cambiar color de fondo cuando se pasa el cursor sobre el botón */
+.add-list-btn:hover,
+.add-card-btn:hover {
+    background-color: #999;
+}
+
+.new-form {
+    height: 150px;
+    margin-top: 5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: #172b4d;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    inset: 130px auto auto 270px;
+    width: 304px;
+}
+
+.new-form h4 {
+    text-align: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-form input {
+    outline: none;
+    border: solid 2px #ccc;
+    border-radius: 0.2rem;
+    height: 1.5rem;
+    margin: 2rem 0;
+    transition: border-color 0.3s ease;
+}
+
+.new-form input:focus {
+    border-color: #0079bf;
+}
+
+.new-form button {
+    height: 1.8rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #0079bf;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.new-form button:hover {
+    background-color: #0069ff;
+}
+
+/* Estilo para el botón de eliminar tarjeta */
+.delete-card-btn {
+    background: none;
+    border: none;
+    color: #555; /* Color del icono */
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px; /* Ajusta la posición vertical */
+    right: 5px; /* Ajusta la posición horizontal */
+    font-size: 14px;
+}
+
+.delete-card-btn:hover {
+    color: rgb(255, 93, 93); /* Cambia el color al pasar el mouse sobre el botón */
+}
+
+.card {
+    position: relative; /* Agrega posición relativa a la tarjeta para que los elementos absolutos se posicionen correctamente */
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Espacio entre las cartas */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajusta la posición del botón de eliminar tarjeta cuando se pasa el cursor sobre la tarjeta */
+.card:hover .delete-card-btn {
+    display: block;
+}
+.list-header {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.list-header h3 {
+    margin: 0;
+    word-wrap: break-word;
+    max-width: 180px;    
+}
+
+/* Estilo para el botón de eliminar lista */
+.delete-list-btn {
+    background: none;
+    padding-right: 10px;
+    border: none;
+    color: #555; /* Color del icono */
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-list-btn:hover {
+    color: rgb(255, 93, 93); /* Cambia el color al pasar el mouse sobre el botón */
+}
+
+
+@media (min-width: 600px) {
+    /* Estilos para dispositivos de tamaño md */
+    #new-board-form {
+        inset: 62px auto auto 260px; /* Establece el valor de inset para el formulario */
+    }
+}

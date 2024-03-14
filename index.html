@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trello Clone</title>
+    <link rel="icon" type="image/jpeg" href="images/descarga.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Enlace a Font Awesome para los íconos -->
+</head>
+<body>
+    <nav>
+        <div class="left">
+                <img src="images/trello-logo.svg" alt="logo trello" class="trello-logo">
+                <i class="fas fa-plus plus-icon add-board-btn"></i> <!-- Ícono de signo + -->
+        </div>        
+        <ul>
+            <li><i class="fas fa-search"></i></li> 
+            <li><i class="fas fa-bell"></i></li>
+            <li><i class="fas fa-user"></i></li>
+        </ul>    
+    </nav>
+    <aside>
+        <h3>Espacio de trabajo de Trello</h3>
+        <header>
+            <h4>Sus tableros</h4>
+            <button aria-label="Nuevo tablero" class="add-board-btn"><i class="fas fa-plus"></i></button> <!-- Botón con ícono de signo + -->
+        </header>
+        <ul id="boards-list"></ul> <!-- Lista de tableros -->
+        <section id="board-form" style="display: none; position: absolute; top: 80px; right: 20px;"> <!-- Ajustes de posición del formulario -->
+            <form id="new-board-form">
+                <h4>Crear tablero</h4>  
+                <img src="images/tableroimage (1).svg" alt="tablero ejemplo">
+                <button type="button" class="close-form-btn">&times;</button> <!-- Botón de cerrar con cruz -->
+                <div class="input-container">
+                    <label for="board-name" id="board-title">Titulo del tablero</label>
+                    <input type="text" id="board-name" required>
+                    <button type="submit" id="board-buttom">Crear</button>
+                </div>      
+            </form>
+        </section>
+    </aside>    
+    <main class="main">
+        <section class="board-section">
+            <div id="lists-container" class="lists-container">
+                <!-- Aquí se crearán dinámicamente las listas -->
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script> 
+</body>
+</html>
