@@ -1,1 +1,1 @@
-Basic Trello Clone con javascript, css y html.
+Basic Trello Clone with javascript, css y html.
